@@ -61,6 +61,7 @@ func PrintArr(arr []int) {
 	}
 }
 
+
 func PrintArrByte(arr []byte) {
 	for index, value := range arr {
 		fmt.Println("(", index, ", ", value, ")")
