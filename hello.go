@@ -13,6 +13,10 @@ type Saiyan struct {
 	address string
 }
 
+
+
+
+
 func main() {
 	x := getPower()
 
