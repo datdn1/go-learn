@@ -52,6 +52,12 @@ func main() {
 
 	em := &Employee{Person:per, Salary:1000.0}
 	fmt.Println("Name = ", em.getName(), "Salary = ", em.Salary)
+
+	arr1 := [10]int {1,2,3,4,5,6,7,8,9,0}
+	fmt.Println(arr1)
+	for index, value := range arr1 {
+		fmt.Println("Index = ", index, " Value = ", value)
+	}
 }
 
 /*
