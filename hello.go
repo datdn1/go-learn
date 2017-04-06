@@ -13,9 +13,14 @@ type Saiyan struct {
 	address string
 }
 
+type Person struct {
+	Name string
+}
 
-
-
+type Employee struct {
+	*Person
+	Salary float32
+}
 
 func main() {
 	x := getPower()
@@ -38,6 +43,15 @@ func main() {
 	sa1 := &Saiyan{name:"khoidn1", age:80, address:"Lac Long Quan"}
 	sa1.supper1()
 	fmt.Println("SA1 = ", sa1.age)
+
+	sa2 := NewSaiyan("datdn2", 1000, "Lac Long Quan, Tay Ho")
+	fmt.Println("Name = ", sa2.name, "Age = ", sa2.age, "Address = ", sa2.address)
+
+	per := &Person{Name:"datdn1"}
+	fmt.Println(per.getName())
+
+	em := &Employee{Person:per, Salary:1000.0}
+	fmt.Println("Name = ", em.getName(), "Salary = ", em.Salary)
 }
 
 /*
@@ -67,6 +81,24 @@ func super(s *Saiyan)  {
 func (s *Saiyan) supper1() {
 	s.age += 100
 }
+
+/*
+Factory tao instance thay cho ham khoi tao
+ */
+func NewSaiyan(name string, age int, address string) *Saiyan  {
+	return &Saiyan{name:name, age:100, address:address}
+
+	// or
+	// return  new(Saiyan)
+}
+
+// ham cho struct person
+func (p *Person) getName() string {
+	return p.Name
+}
+
+
+
 
 
 
