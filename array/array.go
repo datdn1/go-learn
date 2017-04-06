@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"sort"
 )
 
 // array trong go la gia tri khong phai la con tro tro den
@@ -40,6 +42,17 @@ func main()  {
 		arr5[i] = arr4[i]
 	}
 	fmt.Println("Len = ", len(arr5), "Cap = ", cap(arr5))
+
+	PrintAppend()
+
+	scores := make([]int, 5)
+	scores = append(scores, 9332)
+	fmt.Println(scores)
+	fmt.Println(len(scores))
+	fmt.Println(cap(scores))
+
+	fmt.Println("Rand = ")
+	randInts()
 }
 
 func PrintArr(arr []int) {
@@ -53,6 +66,34 @@ func PrintArrByte(arr []byte) {
 		fmt.Println("(", index, ", ", value, ")")
 	}
 }
+
+func PrintAppend()  {
+	scores := make([]int, 0, 5)
+	c := cap(scores)
+	fmt.Println(c)
+
+	for i := 0; i < 25; i++ {
+		scores = append(scores, i)
+		if cap(scores) != c {
+			c = cap(scores)
+			fmt.Println(c)
+		}
+	}
+}
+
+func randInts()  {
+	scores := make([]int, 100)
+	for i := 0; i < 100; i++ {
+		scores[i] = int(rand.Int31n(1000))
+	}
+	sort.Ints(scores)
+	worst := make([]int, 5)
+	copy(worst[2:4], scores[:5])
+	fmt.Println(worst)
+	fmt.Println(scores)
+}
+
+
 
 //func appendInt(src []int, data ...int) []int  {
 //	numberRemaind := cap(src) - len(src)
